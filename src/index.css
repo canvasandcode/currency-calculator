@@ -12,10 +12,18 @@ code {
     monospace;
 }
 .wrapper {
-  background: navy;
+  background: #0b0b3e;
   margin: 0;
-  padding: 0;
+  padding: 20px 30px;
   width: 100%;
+}
+
+.wrapper_inner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .title {
@@ -26,12 +34,30 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .flex-column {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.dropdown {
+  background: #0c3c72;
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  color: white;
+  padding: 20px 15px;
+  font-size: 1.1rem;
+  width: 100%
+}
+
+.result_input {
+  background: #0f1055;
+  border: none;
+  padding: 30px;
+  font-size: 1.5rem;
+  color: white;
 }

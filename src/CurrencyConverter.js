@@ -52,45 +52,56 @@ class CurrencyConverter extends Component {
     const { currencies, base, amount, convertTo, result } = this.state; //destructure from state
     return (
       <section className="wrapper">
-        <h2 className="title">Currency Converter</h2>
+        <div className="wrapper_inner">
+          <h2 className="title">Currency Converter</h2>
 
-        <div className="flex">
-          <form className="flex-column">
-            <select
-              className=""
-              name="base"
-              value={base}
-              onChange={this.handleDropDown}
-            >
-              {currencies.map(currency => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-            <input
-              className=""
-              type="number"
-              value={amount}
-              onChange={this.handleInput}
-            />
-          </form>
+          <div className="flex">
+            <form className="flex-column">
+              <select
+                className="dropdown"
+                name="base"
+                value={base}
+                onChange={this.handleDropDown}
+              >
+                {currencies.map(currency => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="result_input"
+                type="number"
+                value={amount}
+                onChange={this.handleInput}
+              />
+            </form>
 
-          <form className="flex-column">
-            <select
-              className=""
-              name="convertTo"
-              value={convertTo}
-              onChange={this.handleDropDown}
-            >
-              {currencies.map(currency => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-            <input className="" value={amount === "" ? "0" : result} />
-          </form>
+            <form className="flex-column">
+              <select
+                className="dropdown"
+                name="convertTo"
+                value={convertTo}
+                onChange={this.handleDropDown}
+              >
+                {currencies.map(currency => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="result_input"
+                value={
+                  amount === ""
+                    ? "0"
+                    : result === isNaN
+                    ? "Calculating..."
+                    : result
+                }
+              />
+            </form>
+          </div>
         </div>
       </section>
     );
