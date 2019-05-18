@@ -4,6 +4,8 @@
   --converter-bg : #0b0b3e;
   --converter-select : #0c3c72;
   --converter-input : #0f1055;
+  --converter-interact : #0c3c7299;
+  
 }
   
 body {
@@ -43,7 +45,6 @@ body {
 
 .flex {
   display: flex;
-  
   justify-content: space-between;
   width: 100%;
   flex-direction: column;
@@ -55,30 +56,6 @@ body {
   flex-direction: column;
   padding-bottom: 2rem;
 }
-
-@media (min-width: 800px) {
-  .flex {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .flex-column {
-    align-items: flex-start;
-    align-items: center;
-  }
-}
-
-/* .custom-select select {
-  background: transparent;
-   width: 268px;
-   padding: 5px;
-   font-size: 16px;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: 34px;
-   -webkit-appearance: none;
-} */
 
 .dropdown,
 .result_input {
@@ -101,7 +78,8 @@ body {
 }
 
 .dropdown:hover {
-  background-color: #0c3c7299;
+  background-color: var(--converter-interact);
+  background-position: right 15px top 70%;
 }
 
 .result_input {
@@ -110,9 +88,88 @@ body {
   padding: 30px;
   font-size: 1.5rem;
   color: white;
+  transition: all .4s;
 }
 
-.result_input: hover {
+.result_input:not([disabled]):hover,
+.result_input:not([disabled]):active
+.result_input:not([disabled]):focus {
+  background-color: var(--converter-interact);
+}
 
+.result_input:disabled {
+  opacity: 1;
+  cursor: auto;
+}
+
+.result_input[type=number]::-webkit-inner-spin-button, 
+.result_input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.result_input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:white;
+  font-size: 18px;
+  opacity: 0.4;
+}
+.result_input::-moz-placeholder { /* Firefox 19+ */
+  color:white;
+  font-size: 18px;
+  opacity: 0.4;
+}
+.result_input:-ms-input-placeholder { /* IE 10+ */
+  color:white;
+  font-size: 18px;
+  opacity: 0.4;
+}
+.result_input:-moz-placeholder { /* Firefox 18- */
+  color:white;
+  font-size: 18px;
+  opacity: 0.4;
+}
+
+.switch_container {
+  display: block;
+  transition: all .4s;
+  transform: rotate(0);
+  cursor: pointer;
+  align-self: center;
+  padding: 0 0 20px;
+}
+
+
+
+.switch_icon {
+  fill: white;
+  transition: all .5s;
+  transform: rotate(90deg);
+}
+
+.switch_icon:hover {
+  fill: greenyellow;
+}
+
+@media (min-width: 800px) {
+  .flex {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .flex-column {
+    align-items: flex-start;
+    align-items: center;
+  }
+
+  .switch_icon {
+    fill: white;
+    transition: all .5s;
+    transform: rotate(0);
+  }
+  
+
+  .switch_icon:hover {
+    transform: rotate(180deg);
+  }
 }
 
