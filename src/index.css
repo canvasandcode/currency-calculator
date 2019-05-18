@@ -1,21 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --converter-bg : #0b0b3e;
+  --converter-select : #0c3c72;
+  --converter-input : #0f1055;
+}
+  
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 .wrapper {
-  background: #0b0b3e;
+  background: var(--converter-bg);
   margin: 0;
   padding: 20px 30px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .wrapper_inner {
@@ -28,34 +32,53 @@ code {
 
 .title {
   color: white;
+  font-size: 1.8rem;
+  padding-bottom: 2rem;
 }
 
 .flex {
   display: flex;
-  align-items: center;
+  
   justify-content: space-around;
   width: 100%;
+  flex-direction: column;
+  transition: all .4s;
 }
 
 .flex-column {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 800px) {
+  .flex {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .flex-column {
+    align-items: flex-start;
+    align-items: center;
+  }
 }
 
 .dropdown {
-  background: #0c3c72;
+  position: relative;
+  width: 100%;
+  background: var(--converter-select) url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='white'/></g></svg>") no-repeat;
+  background-position: right 15px top 50%;
   border: none;
-  border-radius: 0;
+  border-radius: 0;-moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   color: white;
   padding: 20px 15px;
   font-size: 1.1rem;
-  width: 100%
 }
 
 .result_input {
-  background: #0f1055;
+  background: var(--converter-input);
   border: none;
   padding: 30px;
   font-size: 1.5rem;

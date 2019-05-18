@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class CurrencyConverter extends Component {
   state = {
-    currencies: ["USD", "EUR"],
+    currencies: ["USD", "EUR", "GBP"],
     base: "USD", //default value
     amount: "",
     convertTo: "EUR",
