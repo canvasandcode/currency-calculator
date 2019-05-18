@@ -49,29 +49,52 @@ class CurrencyConverter extends Component {
   };
 
   render() {
+    const { currencies, base, amount, convertTo, result } = this.state; //destructure from state
     return (
-    <section>
+      <section>
         <h2>Currency Converter</h2>
-        <div class="flex">
-        <form>
-            <input/>
-            <select>
-                <option>
-                    
-                </option>
-            </select>
-        </form>
 
-        <form>
-            <input/>
-            <select>
-                <option>
-                    
-                </option>
+        <div className="flex">
+          <form className="">
+            <input
+              className=""
+              type="number"
+              value={amount}
+              onChange={this.handleInput}
+            />
+            <select
+              className=""
+              name="base"
+              value={base}
+              onChange={this.handleDropDown}
+            >
+              <option className="" /> {/*map this*/}
             </select>
-        </form>
+          </form>
+
+          <form className="">
+            <input
+              className=""
+              value={
+                amount === ""
+                  ? "0"
+                  : result === null
+                  ? "Calculating..."
+                  : result
+              }
+            />
+
+            <select
+              className=""
+              name="convertTo"
+              value={convertTo}
+              onChange={this.handleDropDown}
+            >
+              <option className="" /> {/*map this*/}
+            </select>
+          </form>
         </div>
-    </section>
+      </section>
     );
   }
 }
