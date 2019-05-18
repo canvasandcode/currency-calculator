@@ -10,7 +10,8 @@ class CurrencyConverter extends Component {
         result: ""
     };
 
-    handleSelect = event => {
+    //Handler for Select
+    handleDropDown = event => {
         this.setState(
           {
             [event.target.name]: event.target.value,
@@ -20,6 +21,7 @@ class CurrencyConverter extends Component {
         );
     };
 
+    //Handler for Input
     handleInput = event => {
         this.setState(
           {
@@ -28,6 +30,16 @@ class CurrencyConverter extends Component {
           },
           this.calculate
         );
+    };
+
+    //calculate function
+    calculate = () => {
+        const amount = this.state.amount;
+        if (amount === isNaN) {
+          return;
+        } else {
+          //
+        }
     };
 
     render(){
