@@ -37,7 +37,7 @@ class CurrencyConverter extends Component {
     if (amount === isNaN) {
       return;
     } else {
-      fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`) //fetch data
+      fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`) //fetch() data
         .then(res => res.json()) //return as json
         .then(data => {
           const result = (data.rates[this.state.convertTo] * amount).toFixed(2); //convert rate * input amount and allowing 2 decimal points
@@ -50,9 +50,28 @@ class CurrencyConverter extends Component {
 
   render() {
     return (
-      <div>
-        <p>CurrencyConverter</p>
-      </div>
+    <section>
+        <h2>Currency Converter</h2>
+        <div class="flex">
+        <form>
+            <input/>
+            <select>
+                <option>
+                    
+                </option>
+            </select>
+        </form>
+
+        <form>
+            <input/>
+            <select>
+                <option>
+                    
+                </option>
+            </select>
+        </form>
+        </div>
+    </section>
     );
   }
 }
