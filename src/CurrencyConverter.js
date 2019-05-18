@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class CurrencyConverter extends Component {
   state = {
     currencies: ["USD", "EUR"],
-    base: "USD",
+    base: "USD", //default value
     amount: "",
     convertTo: "EUR",
     result: ""
@@ -51,17 +51,11 @@ class CurrencyConverter extends Component {
   render() {
     const { currencies, base, amount, convertTo, result } = this.state; //destructure from state
     return (
-      <section>
-        <h2>Currency Converter</h2>
+      <section className="wrapper">
+        <h2 className="title">Currency Converter</h2>
 
         <div className="flex">
-          <form className="">
-            <input
-              className=""
-              type="number"
-              value={amount}
-              onChange={this.handleInput}
-            />
+          <form className="flex-column">
             <select
               className=""
               name="base"
@@ -74,20 +68,15 @@ class CurrencyConverter extends Component {
                 </option>
               ))}
             </select>
-          </form>
-
-          <form className="">
             <input
               className=""
-              value={
-                amount === ""
-                  ? "0"
-                  : result === null
-                  ? "Calculating..."
-                  : result
-              }
+              type="number"
+              value={amount}
+              onChange={this.handleInput}
             />
+          </form>
 
+          <form className="flex-column">
             <select
               className=""
               name="convertTo"
@@ -100,6 +89,7 @@ class CurrencyConverter extends Component {
                 </option>
               ))}
             </select>
+            <input className="" value={amount === "" ? "0" : result} />
           </form>
         </div>
       </section>
