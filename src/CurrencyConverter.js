@@ -10,6 +10,26 @@ class CurrencyConverter extends Component {
         result: ""
     };
 
+    handleSelect = event => {
+        this.setState(
+          {
+            [event.target.name]: event.target.value,
+            result: null
+          },
+          this.calculate,
+        );
+    };
+
+    handleInput = event => {
+        this.setState(
+          {
+            amount: event.target.value,
+            result: null
+          },
+          this.calculate
+        );
+    };
+
     render(){
         return(
             <div>
