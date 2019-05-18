@@ -1,33 +1,118 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --converter-bg : #0b0b3e;
+  --converter-select : #0c3c72;
+  --converter-input : #0f1055;
+}
+  
+body {
+  background: var(--converter-bg);
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  background: var(--converter-bg);
+  margin: 0;
+  padding: 20px 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper_inner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.title {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.label {
+  color: white;
+  align-self: flex-start
+}
+
+.flex {
+  display: flex;
+  
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: column;
+  transition: all .4s;
+}
+
+.flex-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 800px) {
+  .flex {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .flex-column {
+    align-items: flex-start;
+    align-items: center;
+  }
+}
+
+/* .custom-select select {
+  background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+} */
+
+.dropdown,
+.result_input {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  background: var(--converter-select) url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='white'/></g></svg>") no-repeat;
+  background-position: right 15px top 50%;
+  border: none;
+  border-radius: 0;-moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: white;
+  padding: 20px 15px;
+  font-size: 1.1rem;
+  transition: all .4s;
+}
+
+.dropdown:hover {
+  background-color: #0c3c7299;
+}
+
+.result_input {
+  background: var(--converter-input);
+  border: none;
+  padding: 30px;
+  font-size: 1.5rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.result_input: hover {
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
