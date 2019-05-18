@@ -69,7 +69,7 @@ class CurrencyConverter extends Component {
   };
 
   render() {
-    const { currencies, base, amount, convertTo, result } = this.state; //destructure from state
+    const {base, amount, convertTo, result } = this.state; //destructure from state
     return (
       <section className="wrapper">
         <div className="wrapper_inner">
@@ -85,8 +85,8 @@ class CurrencyConverter extends Component {
                 onChange={this.handleDropDown}
               >
                 {this.state.currencies.map(currency => (
-                  <option key={currency.value} value={currency.value}>
-                    {currency.display}
+                  <option key={currency} value={currency}>
+                    {currency}
                   </option>
                 ))}
               </select>
@@ -108,8 +108,8 @@ class CurrencyConverter extends Component {
                 onChange={this.handleDropDown}
               >
                 {this.state.currencies.map(currency => (
-                  <option key={currency.value} value={currency.value}>
-                    {currency.display}
+                  <option key={currency} value={currency}>
+                    {currency}
                   </option>
                 ))}
               </select>
