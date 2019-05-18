@@ -34,7 +34,11 @@ body {
 .title {
   color: white;
   font-size: 1.8rem;
-  padding-bottom: 2rem;
+}
+
+.label {
+  color: white;
+  align-self: flex-start
 }
 
 .flex {

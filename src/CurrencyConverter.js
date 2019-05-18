@@ -26,9 +26,6 @@ class CurrencyConverter extends Component {
       });
   }
 
-  
-
-
   //Handler for Select
   handleDropDown = event => {
     this.setState(
@@ -69,7 +66,7 @@ class CurrencyConverter extends Component {
   };
 
   render() {
-    const {base, amount, convertTo, result } = this.state; //destructure from state
+    const { base, amount, convertTo, result } = this.state; //destructure from state
     return (
       <section className="wrapper">
         <div className="wrapper_inner">
@@ -77,7 +74,7 @@ class CurrencyConverter extends Component {
 
           <div className="flex">
             <form className="flex-column">
-              {/* <div className="custom-select"> */}
+            <p className="label">1 USD = 0.8110 EUR</p>
               <select
                 className="dropdown"
                 name="base"
@@ -90,7 +87,7 @@ class CurrencyConverter extends Component {
                   </option>
                 ))}
               </select>
-              {/* </div> */}
+
               <input
                 className="result_input"
                 type="number"
@@ -100,7 +97,7 @@ class CurrencyConverter extends Component {
             </form>
 
             <form className="flex-column">
-              {/* <div className="custom-select"> */}
+              <p className="label">1 USD = 0.8110 EUR</p>
               <select
                 className="dropdown"
                 name="convertTo"
@@ -113,7 +110,7 @@ class CurrencyConverter extends Component {
                   </option>
                 ))}
               </select>
-              {/* </div> */}
+
               <input
                 className="result_input"
                 value={
