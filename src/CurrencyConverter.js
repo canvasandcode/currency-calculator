@@ -10,10 +10,23 @@ class CurrencyConverter extends Component {
   };
 
   componentDidMount() {
-    fetch('https://api.exchangeratesapi.io/latest')
-      .then(response=> response.json())
-      .then(rates => {this.setState({ currencies: rates})});
+    fetch("https://api.exchangeratesapi.io/latest")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        let currenciesFromApi = Object.keys(data.rates);
+        console.log(currenciesFromApi);
+        this.setState({
+          currencies: currenciesFromApi
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
+
+  
 
 
   //Handler for Select
@@ -47,7 +60,7 @@ class CurrencyConverter extends Component {
       fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`) //fetch() data
         .then(res => res.json()) //return as json
         .then(data => {
-          const result = (data.rates[this.state.convertTo] * amount).toFixed(2); //convert rate * input amount and allowing 2 decimal points 
+          const result = (data.rates[this.state.convertTo] * amount).toFixed(2); //convert rate * input amount and allowing 2 decimal points
           this.setState({
             result //update state to show new result
           });
@@ -64,21 +77,20 @@ class CurrencyConverter extends Component {
 
           <div className="flex">
             <form className="flex-column">
-              
+              {/* <div className="custom-select"> */}
               <select
                 className="dropdown"
                 name="base"
                 value={base}
                 onChange={this.handleDropDown}
               >
-                
-                  <option
-                  value={currencies}>
-                    
+                {this.state.currencies.map(currency => (
+                  <option key={currency.value} value={currency.value}>
+                    {currency.display}
                   </option>
-                
+                ))}
               </select>
-              
+              {/* </div> */}
               <input
                 className="result_input"
                 type="number"
@@ -88,20 +100,20 @@ class CurrencyConverter extends Component {
             </form>
 
             <form className="flex-column">
-              
+              {/* <div className="custom-select"> */}
               <select
                 className="dropdown"
                 name="convertTo"
                 value={convertTo}
                 onChange={this.handleDropDown}
               >
-                
-                  <option value={currencies}>
-                    
+                {this.state.currencies.map(currency => (
+                  <option key={currency.value} value={currency.value}>
+                    {currency.display}
                   </option>
-                
+                ))}
               </select>
-              
+              {/* </div> */}
               <input
                 className="result_input"
                 value={
