@@ -68,7 +68,11 @@ class CurrencyConverter extends Component {
               value={base}
               onChange={this.handleDropDown}
             >
-              <option className="" /> {/*map this*/}
+              {currencies.map(currency => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
             </select>
           </form>
 
@@ -90,7 +94,11 @@ class CurrencyConverter extends Component {
               value={convertTo}
               onChange={this.handleDropDown}
             >
-              <option className="" /> {/*map this*/}
+              {currencies.map(currency => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
             </select>
           </form>
         </div>
