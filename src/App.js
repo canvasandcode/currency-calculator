@@ -15,6 +15,7 @@ class App extends Component {
       .then(response => {
         return response.json();
       })
+
       .then(data => {
         let currenciesFromApi = Object.keys(data.rates);
         console.log(currenciesFromApi);
@@ -22,6 +23,7 @@ class App extends Component {
           currencies: currenciesFromApi
         });
       })
+
       .catch(error => {
         console.log(error);
       });
@@ -49,19 +51,38 @@ class App extends Component {
     );
   };
 
+  //Handler for Swap Button
+  handleSwap = e => {
+    const base = this.state.base;
+    const convertTo = this.state.convertTo;
+    e.preventDefault();
+    this.setState(
+      {
+        convertTo: base,
+        base: convertTo
+      },
+      this.calculate
+    );
+  };
+
   //Calculate function
   calculate = () => {
     const amount = this.state.amount;
     if (amount === isNaN) {
-      return;
+      return; // prevent function from executing if not a number
     } else {
+      //else 1. fetch() data
       fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`) //fetch() data
-        .then(res => res.json()) //return as json
+        .then(res => res.json()) //2. return as json
         .then(data => {
-          const result = (data.rates[this.state.convertTo] * amount).toFixed(2); //convert rate * input amount and allowing 2 decimal points
+          const result = (data.rates[this.state.convertTo] * amount).toFixed(2); //3. convert rate * input amount and allowing 2 decimal points
           this.setState({
-            result //update state to show new result
+            result //4. update state to show new result
           });
+        })
+
+        .catch(error => {
+          console.log(error);
         });
     }
   };
@@ -73,8 +94,9 @@ class App extends Component {
         <div className="wrapper_inner">
           <h2 className="title">Currency Converter</h2>
           <p className="label">
-            {amount} {base} =
-            {amount === "" ? "0" : result === null ? "Calculating..." : result}{" "}
+            {amount} {base} = {` `}
+            {amount === "" ? "0" : result === null ? "Calculating..." : result}
+            {` `}
             {convertTo}
           </p>
           <div className="flex">
@@ -101,7 +123,7 @@ class App extends Component {
               />
             </form>
 
-            <span className="switch_container">
+            <span className="switch_container" onClick={this.handleSwap}>
               <svg
                 className="switch_icon"
                 width="48"
