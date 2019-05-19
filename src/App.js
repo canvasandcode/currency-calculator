@@ -9,7 +9,7 @@ class App extends Component {
     result: ""
   };
 
-  //Fetching data from an API, returning as .json, creating a variable consisting of they keys (currency codes) - using these as an array to populare the dropdowns
+  //Fetching data from an API, returning as .json, creating a variable consisting of the keys (currency codes) - using these as an array to populate the dropdowns
   componentDidMount() {
     fetch("https://api.exchangeratesapi.io/latest")
       .then(response => {
@@ -17,10 +17,10 @@ class App extends Component {
       })
 
       .then(data => {
-        let currenciesFromApi = Object.keys(data.rates);
+        let currenciesFromApi = Object.keys(data.rates); //return array of rates
         console.log(currenciesFromApi);
         this.setState({
-          currencies: currenciesFromApi
+          currencies: currenciesFromApi //add rates to state
         });
       })
 
@@ -30,10 +30,10 @@ class App extends Component {
   }
 
   //Handler for Select
-  handleDropDown = event => {
+  handleDropDown = e => {
     this.setState(
       {
-        [event.target.name]: event.target.value,
+        [e.target.name]: e.target.value, //assign value to select
         result: null
       },
       this.calculate
@@ -41,10 +41,10 @@ class App extends Component {
   };
 
   //Handler for Input
-  handleInput = event => {
+  handleInput = e => {
     this.setState(
       {
-        amount: event.target.value,
+        amount: e.target.value, //value is user input
         result: null
       },
       this.calculate
@@ -72,7 +72,7 @@ class App extends Component {
       return; // prevent function from executing if not a number
     } else {
       //else 1. fetch() data
-      fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`) //fetch() data
+      fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`)
         .then(res => res.json()) //2. return as json
         .then(data => {
           const result = (data.rates[this.state.convertTo] * amount).toFixed(2); //3. convert rate * input amount and allowing 2 decimal points
