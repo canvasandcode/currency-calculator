@@ -2,7 +2,7 @@
   "name": "currency-calculator",
   "version": "0.1.0",
   "private": true,
-  "engines" {
+  "engines": {
     "node": "10.4.0"
   },
   "dependencies": {
